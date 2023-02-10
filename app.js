@@ -102,8 +102,7 @@ app.get("/error2", function(req,res){
 app.post("/register", function(req,res){
     User.register({username : req.body.username, email : req.body.email}, req.body.password , function(err,user){
         if(err){
-            console.log(err);
-            res.redirect("/login");
+            res.render("error");
         } else {
             passport.authenticate("local")(req,res,function(){
                 res.redirect("/success");
